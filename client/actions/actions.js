@@ -21,7 +21,7 @@ var fetchDataError = function(error){
 var fetchData = function(){
 	return function(dispatch){
 	//match it to the server.js
-	var url = 'http://localhost:8080/api/hello';
+	var url = 'http://localhost:8080/tasks';
 	//this fetch is available thanks to Thunk middleware which will be handled by the reducers once
 	//the action is dispatch to the reducer and then in the store
 	return fetch(url).then(function(response) {
@@ -34,7 +34,7 @@ var fetchData = function(){
        })
  
        .then(function(data) {
-          // console.log("fetchDATA resolved promise: ", data);
+          // console.log("fetchDATA resolved promise in Actions: ", data);
            return dispatch(
            	//this will pass the entire object comming from the backend
            	//better to leave it like this and point to the speficic data in reducers 

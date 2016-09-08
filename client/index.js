@@ -14,13 +14,11 @@ var HelloWorld = React.createClass({
 	},
     render: function(){
     	console.log("the array : ", this.props.tasks);
-    	 var arrayData = this.props.tasks;
-    	 console.log("the arrayData : ", arrayData);
-    	 // var task = arrayData.map(function(value){
-    	 // 	return <div>value.id</div>
-    	 // });
+    	var todos = this.props.tasks.map(function(value){
+    	 	return <li>{value.title}</li>
+    	 });
         return (
-        	<div>{this.props.tasks[0].title}</div>
+        	<div>{todos}</div>
     	);
     }
 });

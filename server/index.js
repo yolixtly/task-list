@@ -5,9 +5,7 @@ var dummyData = require('./dummyData');
 
 app.use('/', express.static('build'));
 
-
-
-app.get('/api/hello', function(request, response){
+app.get('/tasks', function(request, response){
 	response.send(dummyData);
 });
 
