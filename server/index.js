@@ -8,5 +8,5 @@ app.get('/api/hello', function(request, response){
 });
 
 app.listen(8080, function () {
-  console.log('Listening backend at 8080!');
+  console.log('Listening at 8080!');
 });
