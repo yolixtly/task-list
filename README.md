@@ -19,7 +19,7 @@ Watch will watch the directory and rebuild as needed
 npm run watch
 ```
 
-Dev will run watch and `lite-server` a development server with browser-sync
+Dev will run watch
 ``` bash
 npm run dev
 ```
