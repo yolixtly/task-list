@@ -3,7 +3,7 @@ var ReactDOM = require('react-dom');
 
 var HelloWorld = function() {
     return (
-        <div>Hello World</div>
+        <div>Hello World!</div>
     );
 };
 
