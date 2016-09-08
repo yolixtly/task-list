@@ -3,6 +3,10 @@ var app = express();
 
 app.use('/', express.static('build'));
 
-app.listen(3000, function () {
-  console.log('Listening at 3000!');
+app.get('/api/hello', function(request, response){
+	response.json({message: 'Hello From express!'});
+});
+
+app.listen(8080, function () {
+  console.log('Listening backend at 8080!');
 });
