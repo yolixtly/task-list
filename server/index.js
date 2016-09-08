@@ -1,10 +1,14 @@
 var express = require('express');
 var app = express();
 
+var dummyData = require('./dummyData');
+
 app.use('/', express.static('build'));
 
+
+
 app.get('/api/hello', function(request, response){
-	response.json({message: 'Hello From express!!'});
+	response.send(dummyData);
 });
 
 app.listen(8080, function () {

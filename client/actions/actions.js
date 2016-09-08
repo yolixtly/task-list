@@ -34,7 +34,7 @@ var fetchData = function(){
        })
  
        .then(function(data) {
-               console.log("fetch DATA promise: ", data);
+          // console.log("fetchDATA resolved promise: ", data);
            return dispatch(
            	//this will pass the entire object comming from the backend
            	//better to leave it like this and point to the speficic data in reducers 

@@ -13,16 +13,21 @@ var HelloWorld = React.createClass({
 		this.props.dispatch(actions.fetchData());
 	},
     render: function(){
+    	console.log("the array : ", this.props.tasks);
+    	 var arrayData = this.props.tasks;
+    	 console.log("the arrayData : ", arrayData);
+    	 // var task = arrayData.map(function(value){
+    	 // 	return <div>value.id</div>
+    	 // });
         return (
-        	<div>{this.props.messageFromComponent}</div>
+        	<div>{this.props.tasks[0].title}</div>
     	);
     }
 });
 
 var mapStateToProps = function(state, props) {
-		console.log('something happened', props);
     return {
-        messageFromComponent: state.message
+        tasks: state.dummyData
     };
 };
 
