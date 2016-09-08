@@ -40,7 +40,7 @@ npm run dev
 
 ## Goals and Steps
 
-Goal 1:  Walking Skeleton Node/Express + React/Redux/Thunk
+### Goal 1:  Walking Skeleton Node/Express + React/Redux/Thunk
 
 Create express app to serve an item
 
@@ -58,7 +58,7 @@ Create React/Redux/Thunk app to display item from server
 -   Add Redux to the mix and update the display
 -   Add Thunk to the app and connect to server
 
-Goal 2: Add feature to display List of tasks
+### Goal 2: Add feature to display List of tasks
 
 Update express app to serve a list of tasks
 
@@ -73,7 +73,7 @@ Update React app to retrieve and display list of Tasks
 -   Fetch list of tasks
 -   Update Redux app to display list of ‘tasks’
 
-Goal 3: Add feature to create new Tasks
+### Goal 3: Add feature to create new Tasks
 
 -   Create input box and respond to submit event
 -   Capture text and post to server (clear input)
@@ -82,7 +82,7 @@ Goal 3: Add feature to create new Tasks
 -   React app handles the response and updates the list with new item
 -   Challenge: Generate new ID for new Task.
 
-Goal 4: Add feature to update title of a task
+### Goal 4: Add feature to update title of a task
 
 -   Create a PUT route with ID and title param
 -   Update correct task item with new title
@@ -91,7 +91,7 @@ Goal 4: Add feature to update title of a task
 -   Use Thunk to PUT changes to the server
 -   Handle success or failure results and update display
 
-Goal 5: Add new feature to track 'completed' status of tasks
+### Goal 5: Add new feature to track 'completed' status of tasks
 
 -   Update the data model on server, add 'completed : true|false'
 -   Update route to accept 'completed' status.
@@ -101,7 +101,7 @@ Goal 5: Add new feature to track 'completed' status of tasks
 -   Send new completed state to server and update the correct item
 -   Ensure the display reflects the current state
 
-Goal 6: Add new feature to delete tasks
+### Goal 6: Add new feature to delete tasks
 
 -   Update DELETE route which accepts an ID to delete
 -   Test routes with Postman
@@ -110,13 +110,13 @@ Goal 6: Add new feature to delete tasks
 -   Send DELETE request to the server
 -   Ensure the display is reflects the deleted event
 
-Goal 7: (Client side update): Add new features filter completed tasks
+### Goal 7: (Client side update): Add new features filter completed tasks
 
 -   Create 3 states: 'show open tasks', 'show closed tasks', 'show all'
 -   Update React to filter tasks and update display
 -   Ensure new, completed-toggle and delete functionality still works
 
-Goal 8: (Server side update): Add Persistence with MongoDB
+### Goal 8: (Server side update): Add Persistence with MongoDB
 
 -   Install Mongo and Mongoose
 -   Update in-memory data model and CRUD tasks to use mongo
