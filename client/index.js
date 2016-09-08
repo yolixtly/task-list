@@ -6,7 +6,7 @@ var Provider = require('react-redux').Provider;
 var connect = require('react-redux').connect;
 var store = require('./store');
 var actions = require('./actions/actions');
-
+var Form = require('./components/form-component');
 
 var HelloWorld = React.createClass({
 	componentDidMount: function(){
@@ -15,10 +15,13 @@ var HelloWorld = React.createClass({
     render: function(){
     	console.log("the array : ", this.props.tasks);
     	var todos = this.props.tasks.map(function(value){
-    	 	return <li>{value.title}</li>
+    	 	return <li key={value.id}>{value.title}</li>
     	 });
         return (
-        	<div>{todos}</div>
+        	<div>
+        	<Form />
+        	{todos}
+        	</div>
     	);
     }
 });

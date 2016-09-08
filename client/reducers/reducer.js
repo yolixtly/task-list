@@ -7,7 +7,9 @@ var actions = require('../actions/actions');
 // if we would not dispatch the fetch action from the component
 // then this will be displayed
 //this initial state should match the value that we are returning from the Success action
-// {dummyData: []} vs {dummyData: action.data}
+// {dummyData: []} vs {dummyData: action.data} real answer is:
+// We need it because before the async comes back on the first render,
+// we are calling map on a property that doesn’t exist, and it chokes.
 var initialState = {dummyData: []};
 
 var reducerCreator = function(state, action){
