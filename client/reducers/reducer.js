@@ -1,11 +1,11 @@
 var actions = require('../actions/actions');
 
 // we dont need this anymore when we use thunk 
-// because the initialState will come from the backend
-// just in case leave it
-var initialState = {
-	message: "Hello From Redux initial state from Reducers.js"
-}
+// because the state will come from the backend
+// leave it in case that the backend didnt work or 
+// if we would not dispatch the fetch action from the component
+// then this will be displayed
+var initialState = [];
 
 var  reducerCreator = function(state, action){
 	state = state || initialState;

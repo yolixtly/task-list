@@ -9,7 +9,7 @@ var actions = require('./actions/actions');
 
 
 var HelloWorld = React.createClass({
-	componentWillMount: function(){
+	componentDidMount: function(){
 		this.props.dispatch(actions.fetchData());
 	},
     render: function(){
