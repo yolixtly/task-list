@@ -8,7 +8,7 @@
     "mkdir": "mkdir -p build",
     "clean": "rm -rf build",
     "build": "npm run clean && npm run mkdir && npm run build:html && npm run build:js",
-    "serve": "lite-server",
+    "serve": "nodemon server/index",
     "watch": "npm run watch:html & npm run watch:js",
     "watch:html": "npm run build:html && chokidar index.html -c 'npm run build:html'",
     "build:html": "npm run clean:html && cp index.html build/",
@@ -21,6 +21,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "express": "^4.14.0",
     "react": "^15.3.1",
     "react-dom": "^15.3.1",
     "react-router": "^2.7.0"
@@ -36,6 +37,7 @@
     "eslint-plugin-react": "^6.2.0",
     "less": "^2.7.1",
     "lite-server": "^2.2.2",
-    "webpack": "^1.13.1"
+    "webpack": "^1.13.1",
+    "nodemon": "^1.10.2"
   }
 }
