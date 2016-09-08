@@ -4,7 +4,7 @@ var app = express();
 app.use('/', express.static('build'));
 
 app.get('/api/hello', function(request, response){
-	response.json({message: 'Hello From express!'});
+	response.json({message: 'Hello From express!!'});
 });
 
 app.listen(8080, function () {
