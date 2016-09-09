@@ -45,6 +45,21 @@ app.post('/tasks', function(req, res){
 	res.status(201).json({});
 });
 
+app.put('/tasks/:id', function(request, response){
+	//loop in the dummy data 
+	if(!request.body.title || !request.params.id){
+		return response.sendStatus(404);
+	} 
+	for(var i = 0; i < dummyData.length; i++){
+		if(dummyData[i].id == request.params.id) {
+			dummyData[i].title = request.body.title;
+		}
+	}
+	//find the id we are looking for
+	//update that id 
+	response.json({});
+});
+
 app.listen(8080, function () {
   console.log('Listening at 8080!');
 });

@@ -5,6 +5,7 @@ var FETCH_DATA_ERROR = 'FETCH_DATA_ERROR';
 var SAVE_DATA_SUCCESS = 'SAVE_DATA_SUCCESS';
 var SAVE_DATA_ERROR = 'SAVE_DATA_ERROR';
 
+
 //this is a Sync Success function dispatched from the Fetch Async which handles the Thunk asyn request to the backend 
 var fetchDataSuccess = function(data){
 	return {
