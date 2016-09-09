@@ -12,6 +12,10 @@ var HelloWorld = React.createClass({
 	componentDidMount: function(){
 		this.props.dispatch(actions.fetchData());
 	},
+    submitForm: function(item){
+        this.props.dispatch(actions.saveListItem(item));
+        this.props.dispatch(actions.fetchData());
+    },
     render: function(){
     	console.log("the array : ", this.props.tasks);
     	var todos = this.props.tasks.map(function(value){
@@ -19,7 +23,7 @@ var HelloWorld = React.createClass({
     	 });
         return (
         	<div>
-        	<Form />
+        	<Form onTodoSubmit={this.submitForm} />
         	{todos}
         	</div>
     	);

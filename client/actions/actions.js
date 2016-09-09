@@ -2,6 +2,8 @@ require('isomorphic-fetch');
 
 var FETCH_DATA_SUCCESS = 'FETCH_DATA_SUCCESS';
 var FETCH_DATA_ERROR = 'FETCH_DATA_ERROR';
+var SAVE_DATA_SUCCESS = 'SAVE_DATA_SUCCESS';
+var SAVE_DATA_ERROR = 'SAVE_DATA_ERROR';
 
 //this is a Sync Success function dispatched from the Fetch Async which handles the Thunk asyn request to the backend 
 var fetchDataSuccess = function(data){
@@ -17,6 +19,22 @@ var fetchDataError = function(error){
     error: error
   };
 };
+//SAVING THE DATA ACTIONS: 
+//this is a Sync Success function dispatched from the Fetch Async which handles the Thunk asyn request to the backend 
+var saveDataSuccess = function(item){
+  return {
+    type: SAVE_DATA_SUCCESS,
+    item: item
+  };
+};
+//this is a Sync Error function dispatched from the Fetch Async which handles the Thunk asyn request to the backend 
+var saveDataError = function(error){
+  return {
+    type: SAVE_DATA_ERROR,
+    error: error
+  };
+};
+
 //Fetch async calls
 var fetchData = function(){
 	return function(dispatch){
@@ -49,8 +67,46 @@ var fetchData = function(){
    }
 };
 
+var saveListItem = function(item) {
+  return function(dispatch) {
+    var url = 'http://localhost:8080/tasks';
+    return fetch(url, {
+      method: 'post',
+      headers: {
+        "Content-type": "application/json"
+      },
+      body: JSON.stringify({title: item})
+    }).then(function(response) {
+      if (response.status < 200 || response.status >= 300) {
+        var error = new Error(response.statusText)
+        error.response = response
+        throw error;
+      }
+      return response.json();
+    })
+    .then(function(data) {
+     console.log("POST DATA: ", data);
+     return dispatch(
+      // we are not going to sending back from the server side ?
+      saveDataSuccess()
+      );
+   })
+    .catch(function(error) {
+      return dispatch(
+        saveDataError(error)
+        );
+    });
+  };
+};
+
+
+exports.saveListItem = saveListItem;
 exports.fetchData = fetchData;
 exports.FETCH_DATA_SUCCESS = FETCH_DATA_SUCCESS;
 exports.fetchDataSuccess = fetchDataSuccess;
 exports.FETCH_DATA_ERROR = FETCH_DATA_ERROR;
 exports.fetchDataError = fetchDataError;
+exports.SAVE_DATA_SUCCESS = SAVE_DATA_SUCCESS;
+exports.saveDataSuccess = saveDataSuccess;
+exports.SAVE_DATA_ERROR = SAVE_DATA_ERROR;
+exports.saveDataError = saveDataError;

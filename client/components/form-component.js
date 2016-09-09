@@ -6,6 +6,7 @@ var Form = React.createClass({
 		//Grabs the value from the input on submit
 		var newTask = this.refs.theInput.value;
 		console.log('NewTask ', newTask);
+		this.props.onTodoSubmit(newTask);
 		//Clears the value on Submit
 		this.refs.theInput.value = '';
 	},

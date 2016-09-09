@@ -1,4 +1,5 @@
 var actions = require('../actions/actions');
+var update = require('react-addons-update');
 
 
 // we dont need this anymore when we use thunk 
@@ -14,13 +15,29 @@ var initialState = {dummyData: []};
 
 var reducerCreator = function(state, action){
 	state = state || initialState;
-	if(action.type === actions.FETCH_DATA_SUCCESS) {
+		if(action.type === actions.FETCH_DATA_SUCCESS) {
 		// console.log('from reducer', action.data);
 			return {
 				dummyData: action.data
 			};
 		}
 		if(action.type === actions.FETCH_DATA_ERROR) {
+			return {
+				error : action.error
+			};
+		}
+		if(action.type === actions.SAVE_DATA_SUCCESS) {
+		// console.log('from reducer', action.data);
+		 var newState = update(state, {
+		 	dummyData : {$push : action.item}
+		 });
+			return {
+
+				dummyData: update(
+					)
+			};
+		}
+		if(action.type === actions.SAVE_DATA_ERROR) {
 			return {
 				error : action.error
 			};

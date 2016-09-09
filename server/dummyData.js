@@ -11,6 +11,6 @@ var task = [
 	id: 003,
 	title: "Task 3"
 	}
-]
+];
 
 module.exports = task;
