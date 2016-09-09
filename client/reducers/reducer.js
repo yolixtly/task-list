@@ -31,13 +31,21 @@ var reducerCreator = function(state, action){
 		 var newState = update(state, {
 		 	dummyData : {$push : action.item}
 		 });
-			return {
-
-				dummyData: update(
-					)
-			};
+			return newState;
 		}
 		if(action.type === actions.SAVE_DATA_ERROR) {
+			return {
+				error : action.error
+			};
+		}
+		if(action.type === actions.UPDATE_DATA_SUCCESS) {
+		// console.log('from reducer', action.data);
+		 var newState = update(state, {
+		 	dummyData : {$set : action.item}
+		 });
+			return newState;
+		}
+		if(action.type === actions.UPDATE_DATA_ERROR) {
 			return {
 				error : action.error
 			};
