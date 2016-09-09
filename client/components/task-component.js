@@ -8,7 +8,6 @@ var TaskComponent = React.createClass({
         var item = this.refs.updateInput.value;
         console.log('updatef form fired');
         this.props.dispatch(actions.updateListItem(this.props.id, item));
-
     },
 	render: function(){
 	return (

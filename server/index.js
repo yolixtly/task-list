@@ -60,6 +60,18 @@ app.put('/tasks/:id', function(request, response){
 	response.json({});
 });
 
+app.delete('/tasks/:id', function(request, response){
+	if(!request.params.id){
+		return response.sendStatus(404);
+	} 
+
+	for(var i = 0; i < dummyData.length; i++){
+		if(dummyData[i].id == request.params.id) {
+			dummyData.splice(dummyData[i], 1);
+		}
+	}
+	response.json({});
+});
 app.listen(8080, function () {
   console.log('Listening at 8080!');
 });
