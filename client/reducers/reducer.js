@@ -50,6 +50,18 @@ var reducerCreator = function(state, action){
 				error : action.error
 			};
 		}
+		if(action.type === actions.DELETE_DATA_SUCCESS) {
+		// console.log('from reducer', action.data);
+		 var newState = update(state, {
+		 	dummyData : {$splice : [action.item, 1]} // correct starting value ??
+		 });
+			return newState;
+		}
+		if(action.type === actions.DELETE_DATA_ERROR) {
+			return {
+				error : action.error
+			};
+		}
 	return state;
 };
 // if you have many different function then use this : 

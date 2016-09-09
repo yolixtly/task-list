@@ -6,6 +6,8 @@ var SAVE_DATA_SUCCESS = 'SAVE_DATA_SUCCESS';
 var SAVE_DATA_ERROR = 'SAVE_DATA_ERROR';
 var UPDATE_DATA_SUCCESS = 'UPDATE_DATA_SUCCESS';
 var UPDATE_DATA_ERROR = 'UPDATE_DATA_ERROR';
+var DELETE_DATA_SUCCESS = 'DELETE_DATA_SUCCESS';
+var DELETE_DATA_ERROR = 'DELETE_DATA_ERROR';
 
 //this is a Sync Success function dispatched from the Fetch Async which handles the Thunk asyn request to the backend 
 var fetchDataSuccess = function(data){
@@ -48,6 +50,22 @@ var updateDataSuccess = function(item){
 var updateDataError = function(error){
   return {
     type: UPDATE_DATA_ERROR,
+    error: error
+  };
+};
+
+//DELETE THE DATA ACTIONS: 
+//this is a Sync Success function dispatched from the Fetch Async which handles the Thunk asyn request to the backend 
+var deleteDataSuccess = function(item){
+  return {
+    type: DELETE_DATA_SUCCESS,
+    item: item
+  };
+};
+//this is a Sync Error function dispatched from the Fetch Async which handles the Thunk asyn request to the backend 
+var deleteDataError = function(error){
+  return {
+    type: DELETE_DATA_ERROR,
     error: error
   };
 };
@@ -134,7 +152,41 @@ var updateListItem = function(id, item) {
       return response.json();
     })
     .then(function(data) {
-     console.log("POST DATA: ", data);
+     console.log("PUT DATA: ", data);
+     return dispatch(
+      // we are not going to sending back from the server side ?
+      //saveDataSuccess()
+        fetchData() // refactor this later
+        // call a new action to update the store with the new todo
+      );
+   })
+    .catch(function(error) {
+      return dispatch(
+        saveDataError(error)
+        );
+    });
+  };
+};
+
+var deleteListItem = function(id) {
+  return function(dispatch) {
+    var url = 'http://localhost:8080/tasks/' + id;
+    return fetch(url, {
+      method: 'delete',
+      headers: {
+        "Content-type": "application/json"
+      },
+      body: JSON.stringify({})
+    }).then(function(response) {
+      if (response.status < 200 || response.status >= 300) {
+        var error = new Error(response.statusText)
+        error.response = response
+        throw error;
+      }
+      return response.json();
+    })
+    .then(function(data) {
+     console.log("DELETE DATA: ", data);
      return dispatch(
       // we are not going to sending back from the server side ?
       //saveDataSuccess()
@@ -161,6 +213,12 @@ exports.updateDataSuccess = updateDataSuccess;
 exports.UPDATE_DATA_ERROR = UPDATE_DATA_ERROR;
 exports.updateDataError = updateDataError;
 exports.updateListItem = updateListItem;
+
+exports.DELETE_DATA_SUCCESS = DELETE_DATA_SUCCESS;
+exports.deleteDataSuccess = deleteDataSuccess;
+exports.DELETE_DATA_ERROR = DELETE_DATA_ERROR;
+exports.deleteDataError = deleteDataError;
+exports.deleteListItem = deleteListItem;
 
 exports.SAVE_DATA_SUCCESS = SAVE_DATA_SUCCESS;
 exports.saveDataSuccess = saveDataSuccess;
